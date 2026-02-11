@@ -1,0 +1,7 @@
+{
+  "name": "Masa Madre & Miel - Panadería Artesanal",
+  "description": "Una experiencia digital premium para los amantes del pan artesanal y la repostería consciente. Incluye pedidos en línea y un asistente experto de IA.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
