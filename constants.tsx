@@ -1,4 +1,3 @@
-
 import { Product } from './types';
 
 export const PRODUCTS: Product[] = [
@@ -8,7 +7,7 @@ export const PRODUCTS: Product[] = [
     description: 'Nuestra firma. 24h de fermentación lenta, harina orgánica y corteza crujiente.',
     price: 6.50,
     category: 'Panes',
-    image: 'https://images.unsplash.com/photo-1585478259715-876a6a81dc4b?q=80&w=800&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1549931319-a545dcf3bc73?q=80&w=800&auto=format&fit=crop',
     nutritionInfo: 'Sin levaduras comerciales, bajo índice glucémico.'
   },
   {
@@ -26,7 +25,7 @@ export const PRODUCTS: Product[] = [
     description: 'Capas infinitas de hojaldre artesanal con mantequilla francesa DOP.',
     price: 3.50,
     category: 'Repostería',
-    image: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=800&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1530610476181-d83430b64dcd?q=80&w=800&auto=format&fit=crop',
   },
   {
     id: '4',
@@ -43,7 +42,7 @@ export const PRODUCTS: Product[] = [
     description: 'Estilo parisino, miga aireada y aroma a cereal tostado.',
     price: 2.90,
     category: 'Panes',
-    image: 'https://images.unsplash.com/photo-1597079910443-60c43fc4f729?q=80&w=800&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1586444248902-2f64eddf13cf?q=80&w=800&auto=format&fit=crop',
   },
   {
     id: '6',
@@ -51,6 +50,6 @@ export const PRODUCTS: Product[] = [
     description: 'Esponjosos, hechos con kéfir artesano para una mejor digestión.',
     price: 3.20,
     category: 'Saludable',
-    image: 'https://images.unsplash.com/photo-1587538637350-bbeac9930841?q=80&w=800&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1601000230132-bc57c162601f?q=80&w=800&auto=format&fit=crop',
   }
 ];

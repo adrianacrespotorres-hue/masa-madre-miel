@@ -1,4 +1,3 @@
-
 import { GoogleGenAI } from "@google/genai";
 
 const SYSTEM_INSTRUCTION = `
@@ -8,38 +7,41 @@ Tu personalidad es cálida, artesanal, culta y apasionada por la salud y la gast
 Funciones:
 1. Recomendar productos basados en gustos (panes de masa madre, repostería saludable).
 2. Explicar los beneficios de la masa madre (mejor digestión, bajo índice glucémico).
-3. Sugerir maridajes (qué pan va mejor con qué queso o comida).
-4. Ayudar con el proceso de pedido.
+3. Sugerir maridajes (ej: pan de centeno con salmón, hogaza clásica con aceite de oliva virgen).
+4. Ayudar con el proceso de pedido e invitar a los usuarios a probar nuestras opciones saludables.
 
 Restricciones:
-- Siempre responde en español.
+- Siempre responde en español elegante y acogedor.
 - Sé concisa pero evocadora (usa palabras como aroma, corteza, fermentación, natural).
-- Si preguntan algo que no es de panadería o nuestra tienda, redirige amablemente la conversación hacia el mundo del pan artesano.
-
-Información de la tienda:
-- Especialidad: Pan de Masa Madre (Sourdough).
-- Ubicación: Calle de la Harina 12.
-- Valores: Orgánico, Lento, Artesanal.
+- Si preguntan algo que no es de panadería o nuestra tienda, redirige amablemente hacia el mundo del pan.
 `;
 
 export async function getBakeryResponse(userMessage: string, history: {role: 'user' | 'model', text: string}[]) {
+  const apiKey = process.env.API_KEY;
+  
+  if (!apiKey || apiKey === "undefined") {
+    return "Nota: Aura necesita que configures la clave 'API_KEY' en el panel de Vercel (Environment Variables) para poder conversar contigo.";
+  }
+
+  const ai = new GoogleGenAI({ apiKey });
+  
   try {
-    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
-    const response = await ai.models.generateContent({
+    const chat = ai.chats.create({
       model: "gemini-3-flash-preview",
-      contents: history.map(h => ({
-        role: h.role,
-        parts: [{ text: h.text }]
-      })).concat([{ role: 'user', parts: [{ text: userMessage }] }]),
       config: {
         systemInstruction: SYSTEM_INSTRUCTION,
         temperature: 0.7,
       },
+      history: history.map(h => ({
+        role: h.role,
+        parts: [{ text: h.text }]
+      }))
     });
 
+    const response = await chat.sendMessage({ message: userMessage });
     return response.text || "Lo siento, mi horno mental se ha enfriado un momento. ¿Podrías repetir eso?";
-  } catch (error) {
+  } catch (error: any) {
     console.error("Gemini Error:", error);
-    return "Ups, parece que hubo un problema con la conexión al obrador. ¡Inténtalo de nuevo!";
+    return "Parece que hay un problema en el obrador digital. ¡Inténtalo de nuevo en un momento!";
   }
 }
