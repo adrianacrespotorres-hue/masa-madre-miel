@@ -5,6 +5,7 @@ import Hero from './components/Hero';
 import ProductGrid from './components/ProductGrid';
 import CartDrawer from './components/CartDrawer';
 import AIChat from './components/AIChat';
+import VoiceAgent from './components/VoiceAgent';
 import { Product, CartItem } from './types';
 import { PRODUCTS } from './constants';
 
@@ -83,6 +84,19 @@ const App: React.FC = () => {
           
           <ProductGrid products={filteredProducts} onAddToCart={addToCart} />
         </div>
+
+        {/* Sección de Voice Call con MadreHogaza */}
+        <section className="bg-stone-900 py-16 text-amber-50">
+          <div className="max-w-4xl mx-auto px-4">
+            <div className="text-center mb-10">
+              <h2 className="text-3xl font-serif mb-4">Habla con MadreHogaza</h2>
+              <p className="text-stone-400 font-light max-w-lg mx-auto">
+                Experimenta una conversación real con voz. Nuestra IA experta, con el corazón de una abuela panadera, está lista para escucharte.
+              </p>
+            </div>
+            <VoiceAgent />
+          </div>
+        </section>
 
         <section className="bg-amber-50 py-20">
           <div className="max-w-4xl mx-auto px-4 text-center">

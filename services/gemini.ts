@@ -28,7 +28,7 @@ export async function getBakeryResponse(userMessage: string, history: {role: 'us
   
   try {
     const chat = ai.chats.create({
-      model: "gemini-3-flash-preview",
+      model: "gemini-2.5-flash",
       config: {
         systemInstruction: SYSTEM_INSTRUCTION,
         temperature: 0.7,
